@@ -2,32 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.book {
+  width: 950px;
+  height: 600px;
+  position: relative;
+  perspective: 2000px;
+  margin: 50px auto;
+  border-radius: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.page {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: transform 0.9s ease-in-out;
+  border-radius: 16px;
+
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.front-page {
+  display: flex;
+  left: 0;
+  transform-origin: right center;
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.back-page {
+  display: flex;
+  right: 0;
+  transform-origin: left center;
+
+}
+
+.book.flipped .front-page {
+  transform: rotateY(180deg);
+
+}
+
+.book.flipped .back-page {
+  transform: rotateY(0deg);
+
+}
+
+.coverPage {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 40px;
+
+}
+
+.newPage {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 40px;
+}
+
+.stf__parent {
+  max-width: 1000px !important;
+  margin-left: 80px !important;
 }
